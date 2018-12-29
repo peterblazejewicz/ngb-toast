@@ -16,6 +16,9 @@
     ],
     "baseUrl": ".",
     "paths": {
+      "@ng-bootstrap/ngb-toast": [
+        "libs/ngb-toast/src/index.ts"
+      ]
     }
   },
   "exclude": [
