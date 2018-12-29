@@ -10,6 +10,12 @@
   "projects": {
     "ngb-toast": {
       "tags": []
+    },
+    "ngb-toast-demo": {
+      "tags": []
+    },
+    "ngb-toast-demo-e2e": {
+      "tags": []
     }
   }
 }

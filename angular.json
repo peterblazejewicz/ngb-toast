@@ -30,6 +30,137 @@
           }
         }
       }
+    },
+    "ngb-toast-demo": {
+      "root": "apps/ngb-toast-demo/",
+      "sourceRoot": "apps/ngb-toast-demo/src",
+      "projectType": "application",
+      "prefix": "ng-bootstrap",
+      "schematics": {
+        "@schematics/angular:component": {
+          "styleext": "scss"
+        }
+      },
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/apps/ngb-toast-demo",
+            "index": "apps/ngb-toast-demo/src/index.html",
+            "main": "apps/ngb-toast-demo/src/main.ts",
+            "polyfills": "apps/ngb-toast-demo/src/polyfills.ts",
+            "tsConfig": "apps/ngb-toast-demo/tsconfig.app.json",
+            "assets": [
+              "apps/ngb-toast-demo/src/favicon.ico",
+              "apps/ngb-toast-demo/src/assets"
+            ],
+            "styles": [
+              "apps/ngb-toast-demo/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "apps/ngb-toast-demo/src/environments/environment.ts",
+                  "with": "apps/ngb-toast-demo/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "aot": true,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "ngb-toast-demo:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "ngb-toast-demo:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "ngb-toast-demo:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "apps/ngb-toast-demo/src/test.ts",
+            "polyfills": "apps/ngb-toast-demo/src/polyfills.ts",
+            "tsConfig": "apps/ngb-toast-demo/tsconfig.spec.json",
+            "karmaConfig": "apps/ngb-toast-demo/karma.conf.js",
+            "styles": [
+              "apps/ngb-toast-demo/src/styles.scss"
+            ],
+            "scripts": [],
+            "assets": [
+              "apps/ngb-toast-demo/src/favicon.ico",
+              "apps/ngb-toast-demo/src/assets"
+            ]
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "apps/ngb-toast-demo/tsconfig.app.json",
+              "apps/ngb-toast-demo/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "ngb-toast-demo-e2e": {
+      "root": "apps/ngb-toast-demo-e2e",
+      "projectType": "application",
+      "prefix": "",
+      "architect": {
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "apps/ngb-toast-demo-e2e/protractor.conf.js",
+            "devServerTarget": "ngb-toast-demo:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "ngb-toast-demo:serve:production"
+            }
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": "apps/ngb-toast-demo-e2e/tsconfig.e2e.json",
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
     }
   },
   "cli": {
